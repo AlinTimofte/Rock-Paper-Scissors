@@ -7,37 +7,42 @@ function getComputerChoice() {
     return "scissors"; 
 }
 
+function getPlayerChoice() {
+    return prompt("Rock Paper Scissors! Choose your option!");
+}
+
 function playRound (playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection === computerSelection)
-        return "It is a tie!";
+        return "Computer chose " + computerSelection + ". It is a tie!";
     switch(playerSelection)
     {
         case "rock":
         if(computerSelection === "paper")
-            return "You lose! Paper beats rock!";
+            return "You lose! Computer chose " + computerSelection + ". Paper beats rock!";
         else
-            return "You win! Rock beats scissors!";
+            return "You win! Computer chose " + computerSelection + ". Rock beats scissors!";
         break;
 
         case "paper":
         if(computerSelection === "scissors")
-            return "You lose! Scissors beat paper!";
+            return "You lose! Computer chose " + computerSelection + ". Scissors beat paper!";
         else
-            return "You win! Paper beats rock!";
+            return "You win! Computer chose " + computerSelection + ". Paper beats rock!";
         break;
 
         case "scissors":
         if(computerSelection === "rock")
-            return "You lose! Rock beats scissors!";
+            return "You lose! Computer chose " + computerSelection + ". Rock beats scissors!";
         else
-            return "You win! Scissors beat paper!";
+            return "You win! Computer chose " + computerSelection + ". Scissors beat paper!";
         break;
 
         default:
             return "Error! Wrong input";
     }
-
 }
 
-alert(playRound("rock", getComputerChoice()));
+
+
+alert(playRound(getPlayerChoice(), getComputerChoice()));
