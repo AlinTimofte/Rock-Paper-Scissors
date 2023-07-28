@@ -43,24 +43,6 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    let computerWins = 0, playerWins = 0;
-    for(let i = 0; i < 5; i++)
-    {
-        let result = playRound(getPlayerChoice(),getComputerChoice());
-        alert(result);
-        if(result.slice(0, 8) === "You lose")
-            computerWins++;
-        else if(result.slice(0, 7) === "You win")
-            playerWins++;
-    }
-    if(computerWins > playerWins)
-        return "Computer wins with "+ computerWins + " victories!";
-    if(playerWins > computerWins)
-        return "Player wins with " + playerWins + " victories!";   
-    return "It is a tie! Both the player and the computer have " + playerWins + " wins!";
-}
-
 
 
 alert(game());
