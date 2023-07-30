@@ -62,10 +62,8 @@ function playRound (playerSelection, computerSelection) {
 }
 
 const buttons = document.querySelectorAll('button');
-const divWinner = document.createElement('div');
+const divWinner = document.querySelectors('.divWinner');
 divWinner.textContent = 'Choose your option!';
-const body = document.querySelector('body');
-body.insertBefore(divWinner,buttons[0]);
 
 buttons.forEach((button) => {
 button.addEventListener('click', () => {
