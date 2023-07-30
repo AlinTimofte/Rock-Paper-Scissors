@@ -1,3 +1,6 @@
+let playerWins = 0;
+let botWins = 0;
+
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 10) % 3;
     if(choice === 0)
@@ -19,23 +22,38 @@ function playRound (playerSelection, computerSelection) {
     {
         case "rock":
         if(computerSelection === "paper")
+        {      
+            botWins++; 
             return "You lose! Computer chose " + computerSelection + ". Paper beats rock!";
-        else
+        } else
+        {
+            playerWins++;
             return "You win! Computer chose " + computerSelection + ". Rock beats scissors!";
+        }
         break;
 
         case "paper":
         if(computerSelection === "scissors")
+        {      
+            botWins++; 
             return "You lose! Computer chose " + computerSelection + ". Scissors beat paper!";
-        else
+        } else 
+        {
+            playerWins++;
             return "You win! Computer chose " + computerSelection + ". Paper beats rock!";
+        }        
         break;
 
         case "scissors":
         if(computerSelection === "rock")
+        {      
+            botWins++; 
             return "You lose! Computer chose " + computerSelection + ". Rock beats scissors!";
-        else
+        } else 
+        {
+            playerWins++;
             return "You win! Computer chose " + computerSelection + ". Scissors beat paper!";
+        }        
         break;
 
         default:
@@ -44,8 +62,18 @@ function playRound (playerSelection, computerSelection) {
 }
 
 const buttons = document.querySelectorAll('button');
+const divWinner = document.createElement('div');
+divWinner.textContent = 'Choose your option!';
+const body = document.querySelector('body');
+body.insertBefore(divWinner,buttons[0]);
+
 buttons.forEach((button) => {
 button.addEventListener('click', () => {
-console.log(playRound(button.className,getComputerChoice()));
+if(botWins < 5 && playerWins < 5)
+    divWinner.textContent = playRound(button.className,getComputerChoice());
+else if(botWins === 5)
+    divWinner.textContent = "Computer has 5 wins! Game ended.";
+else
+    divWinner.textContent = "Player has 5 wins! Game ended.";
 });
 });
