@@ -43,6 +43,9 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
-
-
-alert(game());
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+button.addEventListener('click', () => {
+console.log(playRound(button.className,getComputerChoice()));
+});
+});
